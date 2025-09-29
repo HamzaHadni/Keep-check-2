@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: keepcheck-api
+    env: python
+    rootDir: api
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: PAPERLESS_URL
+        sync: false
+      - key: PAPERLESS_TOKEN
+        sync: false
+
+  - type: static_site
+    name: keepcheck-web
+    rootDir: web
+    buildCommand: ""
+    staticPublishPath: .
+    envVars:
+      - key: NEXT_PUBLIC_API_URL
+        fromService:
+          type: web
+          name: keepcheck-api
+          property: url
