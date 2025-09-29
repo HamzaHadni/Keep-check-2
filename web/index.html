@@ -1,1 +1,45 @@
-<!doctype html><html><head><meta charset='utf-8'><title>KeepCheck</title></head><body><h1>KeepCheck Front</h1></body></html>
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KEEPCHECK — Front</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header"><h1>KEEPCHECK</h1><span class="tagline">GED + OCR + AI</span></header>
+
+  <main class="container">
+    <section class="card">
+      <h2>Ask AI</h2>
+      <div class="row">
+        <input id="question" type="text" placeholder="Ex: factures TTC > 5000 MAD du fournisseur Y" />
+        <button id="askBtn">Poser la question</button>
+      </div>
+      <div class="result"><pre id="answer">⏳ En attente...</pre></div>
+      <div class="config">
+        <label>API base URL:</label>
+        <input id="apiBase" type="text" placeholder="https://keepcheck-api.onrender.com" />
+        <button id="saveCfg">Enregistrer</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Extraction structurée</h2>
+      <div class="grid">
+        <input id="docId" type="number" placeholder="doc_id Paperless" />
+        <select id="docType">
+          <option value="facture">facture</option>
+          <option value="contrat">contrat</option>
+          <option value="cnss">cnss</option>
+        </select>
+        <button id="extractBtn">Extraire</button>
+      </div>
+      <div class="result"><pre id="extractOut">{}</pre></div>
+    </section>
+  </main>
+
+  <footer class="footer">© 2025 KeepCheck</footer>
+  <script src="app.js"></script>
+</body>
+</html>
